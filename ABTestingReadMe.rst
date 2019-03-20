@@ -1,9 +1,22 @@
 London Python Sprint -- Implement a Bayesian A/B testing framework (LPS-Bayesian)
-===============================================
+=================================================================================
 
-The LPS-Bayesian project trains developers to setup a Bayesian A/B testing project from scratch. A manual
-which contains a description of the steps necessary to enable sprint participants
-to perform and implement Bayesian A/B testing (regardless of OS).
+Table of contents
+----------------
+Introduction 
+
+Technologies 
+
+Launch
+
+
+
+
+
+Introduction
+------------
+
+The LPS-Bayesian project describes to developers how to setup a Bayesian A/B testing project from scratch. This read me serves as a descriptive manual of the steps necessary to enable sprint participants to perform and implement Bayesian A/B testing (regardless of OS).
 
 This README outlines the following:
 Creation of a repository, unit tests and benchmarks
@@ -12,12 +25,34 @@ Continuous integration and linting
 Packaging
 
 
+This document provides instructions for sprint users implementing Bayesian A/B Testing.
 
-This document provides instructions for sprint users.
+
+Technologies
+------------
 
 
-//Things to download to create a devinabox
-========================================
+
+Launch
+------
+
+
+Additional elements such as: 
+
+Illustrations
+Scope of functionalities 
+Examples of use
+Project status 
+Sources
+Other information
+
+
+Components to use for Bayesian A/B Testing
+------------------------------------------
+
+
+////////////////////////////////////////////////
+
 
 The following sections outline various files to download and repositories to
 clone into your devinabox including:
