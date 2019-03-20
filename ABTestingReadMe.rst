@@ -37,14 +37,14 @@ Launch
 ------
 
 
-Additional elements such as: 
+-Additional elements such as: 
 
-Illustrations
-Scope of functionalities 
-Examples of use
-Project status 
-Sources
-Other information
+-Illustrations
+-Scope of functionalities 
+-Examples of use
+-Project status 
+-Sources
+-Other information
 
 
 Components to use for Bayesian A/B Testing
