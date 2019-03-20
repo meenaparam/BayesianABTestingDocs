@@ -14,7 +14,7 @@ Launch
 
 
 Introduction
----------
+------------
 
 The LPS-Bayesian project describes to developers how to setup a Bayesian A/B testing project from scratch. This read me serves as a descriptive manual of the steps necessary to enable sprint participants to perform and implement Bayesian A/B testing (regardless of OS).
 
@@ -48,7 +48,7 @@ Other information
 
 
 Components to use for Bayesian A/B Testing
-==========================================
+------------------------------------------
 
 
 ////////////////////////////////////////////////
