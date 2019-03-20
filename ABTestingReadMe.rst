@@ -3,7 +3,7 @@ London Python Sprint -- Implement a Bayesian A/B testing framework (LPS-Bayesian
 
 The LPS-Bayesian project trains developers to setup a Bayesian A/B testing project from scratch. A manual
 which contains a description of the steps necessary to enable sprint participants
-to perform Bayesian A/B testing (regardless of OS).
+to perform and implement Bayesian A/B testing (regardless of OS).
 
 This README outlines the following:
 Creation of a repository, unit tests and benchmarks
