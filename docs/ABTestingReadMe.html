@@ -1,0 +1,188 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>London Python Sprint – Implement a Bayesian A/B testing framework (LPS-Bayesian) &#8212; Bayesian AB Testing 0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="london-python-sprint-implement-a-bayesian-a-b-testing-framework-lps-bayesian">
+<h1>London Python Sprint – Implement a Bayesian A/B testing framework (LPS-Bayesian)<a class="headerlink" href="#london-python-sprint-implement-a-bayesian-a-b-testing-framework-lps-bayesian" title="Permalink to this headline">¶</a></h1>
+<p>The LPS-Bayesian project trains developers to setup a Bayesian A/B testing project from scratch. A manual
+which contains a description of the steps necessary to enable sprint participants
+to perform and implement Bayesian A/B testing (regardless of OS).</p>
+<p>This README outlines the following:
+Creation of a repository, unit tests and benchmarks
+Source code and dependencies
+Continuous integration and linting
+Packaging</p>
+<p>This document provides instructions for sprint users.</p>
+</div>
+<div class="section" id="things-to-download-to-create-a-devinabox">
+<h1>//Things to download to create a devinabox<a class="headerlink" href="#things-to-download-to-create-a-devinabox" title="Permalink to this headline">¶</a></h1>
+<p>The following sections outline various files to download and repositories to
+clone into your devinabox including:</p>
+<ul class="simple">
+<li>version control tools</li>
+<li>compiler</li>
+<li>CPython</li>
+<li>PEPs</li>
+<li>Devguide</li>
+<li>coverage.py</li>
+</ul>
+<div class="section" id="mercurial">
+<h2>//Mercurial<a class="headerlink" href="#mercurial" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="a-compiler">
+<h2>//A Compiler<a class="headerlink" href="#a-compiler" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="cpython">
+<h2>//CPython<a class="headerlink" href="#cpython" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="peps">
+<h2>//PEPs<a class="headerlink" href="#peps" title="Permalink to this headline">¶</a></h2>
+<p>Clone the <a class="reference external" href="http://hg.python.org/peps">PEP repository</a> and build it (use the venv you created to build the
+CPython docs if necessary). This allows sprinters a local copy to reference
+for a PEP and it allows using the easier-to-read HTML version.</p>
+<p>No specific guidelines for building the PEPs are provided since there is only
+a slim chance sprint participants will be editing a PEP.</p>
+</div>
+<div class="section" id="devguide">
+<h2>//Devguide<a class="headerlink" href="#devguide" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="coverage-py">
+<h2>//Coverage.py<a class="headerlink" href="#coverage-py" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Download <a class="reference external" href="https://pypi.python.org/pypi/coverage">coverage</a> (need a special file that is not part of the normal
+distribution of coverage, so can’t just use pip)</li>
+<li>Build CPython: <code class="docutils literal notranslate"><span class="pre">./build_cpython.py</span></code></li>
+<li>Create an venv: <code class="docutils literal notranslate"><span class="pre">./cpython/python</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">venv</span></code></li>
+<li>Extract coverage: <code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-x</span> <span class="pre">-f</span> <span class="pre">coverage-*.tar.gz</span></code></li>
+<li>Install coverage in the venv: <code class="docutils literal notranslate"><span class="pre">./venv/bin/python</span> <span class="pre">coverage-*/setup.py</span> <span class="pre">install</span></code></li>
+<li>Set PYTHONPATH to <code class="docutils literal notranslate"><span class="pre">fullcoverage</span></code> (need to change your directory to the venv):
+<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PYTHONPATH=../coverage-N.N/coverage/fullcoverage</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">unset</span> <span class="pre">CPPFLAGS</span></code> in order to avoid using system Python header files</li>
+<li>Run coverage from the venv: <code class="docutils literal notranslate"><span class="pre">./bin/python</span> <span class="pre">-m</span> <span class="pre">coverage</span> <span class="pre">run</span> <span class="pre">--pylib</span> <span class="pre">-m</span> <span class="pre">test</span></code></li>
+<li>Unset PYTHONPATH: <code class="docutils literal notranslate"><span class="pre">unset</span> <span class="pre">PYTHONPATH</span></code></li>
+<li>Generate coverage report: <code class="docutils literal notranslate"><span class="pre">./bin/python</span> <span class="pre">-m</span> <span class="pre">coverage</span> <span class="pre">html</span> <span class="pre">--directory=../coverage_report</span> <span class="pre">-i</span> <span class="pre">--include=&quot;../cpython/Lib/*&quot;</span> <span class="pre">--title=&quot;CPython</span> <span class="pre">test</span> <span class="pre">coverage</span> <span class="pre">report&quot;</span></code></li>
+</ol>
+<p>Do be aware that this step takes a few <strong>hours</strong>. If you find report generation
+is the bottleneck you can try using PyPy3 or your installed Python 3 interpreter
+to generate the report.</p>
+</div>
+</div>
+<div class="section" id="helpful-files-for-sprint-participants">
+<h1>//Helpful files for sprint participants<a class="headerlink" href="#helpful-files-for-sprint-participants" title="Permalink to this headline">¶</a></h1>
+<p>Helpful files are included in order to make things a little bit easier for
+you, the sprint leader, as well as sprint participants and new contributors.</p>
+<div class="section" id="index-html">
+<h2>//<code class="docutils literal notranslate"><span class="pre">index.html</span></code><a class="headerlink" href="#index-html" title="Permalink to this headline">¶</a></h2>
+<p>An HTML file with links to:</p>
+<ul class="simple">
+<li>documentation which you built previously</li>
+<li>the helper scripts</li>
+</ul>
+</div>
+<div class="section" id="build-cpython-py">
+<h2>//<code class="docutils literal notranslate"><span class="pre">build_cpython.py</span></code><a class="headerlink" href="#build-cpython-py" title="Permalink to this headline">¶</a></h2>
+<p>On UNIX-based OSs this file builds the CPython repository. On all platforms it
+verifies that the expected CPython binary exists.</p>
+<p>While the devguide includes instructions on how to build under UNIX, this
+script simplifies the process for sprint participants by having a single
+command to configure and build CPython. It also uses reasonable defaults
+(e.g. all cores on the CPU).</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Bayesian AB Testing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, XXX.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/ABTestingReadMe.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
