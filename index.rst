@@ -10,7 +10,7 @@ Welcome to Bayesian AB Testing's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   ABTestingReadMe.rst
 
 Indices and tables
 ==================
